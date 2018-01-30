@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import AppBar from 'material-ui/AppBar';
 
-class Header extends PureComponent {
+class Navbar extends PureComponent {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class Header extends PureComponent {
   }
 }
 
-export default Header;
+export default Navbar;
