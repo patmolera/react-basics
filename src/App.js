@@ -1,16 +1,18 @@
 import React, { PureComponent } from 'react';
-import Header from './Main/Navbar.js';
-import Drawer from './Main/Drawer.js';
 import logo from './logo.svg';
 import './App.css';
 
+import {Header} from "./components/header";
+import {Home} from "./components/home";
 
 class App extends PureComponent {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Header/>
-        <Drawers/>
+        <Home/>
+      </div>
+      /* <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
@@ -18,7 +20,7 @@ class App extends PureComponent {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-      </div>
+      </div> */
     );
   }
 }
