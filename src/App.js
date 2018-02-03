@@ -7,10 +7,30 @@ import {Home} from "./components/home";
 
 class App extends PureComponent {
   render() {
+
+    var user = {
+      name: "pat",
+      hobbies: ["running", "biking"]
+    };
+
     return (
       <div className="container">
-        <Header/>
-        <Home/>
+        <div className="row">
+          <div className="col-md-10">
+            <Header/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-10">
+            <Home
+              name={"Patrick"}
+              age={22}
+              user={user}
+            >
+              <p>This is a paragraph! </p>
+            </Home>
+          </div>
+        </div>
       </div>
       /* <div className="App">
         <header className="App-header">
