@@ -8,6 +8,11 @@ export class Home extends PureComponent {
       age: props.initialAge,
       status: 0
     };
+    setTimeout(() => {
+      this.setState({
+        status: 1
+      });
+    }, 2000);
   }
 
   onMakeOlder() {
