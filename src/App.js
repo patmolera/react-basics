@@ -8,11 +8,6 @@ import {Home} from "./components/home";
 class App extends PureComponent {
   render() {
 
-    var user = {
-      name: "pat",
-      hobbies: ["running", "biking"]
-    };
-
     return (
       <div className="container">
         <div className="row">
@@ -24,11 +19,8 @@ class App extends PureComponent {
           <div className="col-md-10">
             <Home
               name={"Patrick"}
-              age={22}
-              user={user}
-            >
-              <p>This is a paragraph! </p>
-            </Home>
+              initialAge={22}
+            />
           </div>
         </div>
       </div>

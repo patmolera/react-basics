@@ -2,23 +2,29 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
 export class Home extends PureComponent {
+  constructor (props){
+    super();
+    this.state = {
+      age: props.initialAge,
+      status: 0
+    };
+  }
+
+  onMakeOlder() {
+    this.setState({
+      age: this.state.age + 1
+    });
+  }
+
   render() {
     console.log(this.props);
     return (
       <div>
         <p>New component!</p>
         <p>Your name is {this.props.name}!</p>
-        <p>Your age is {this.props.age}!</p>
-        <p>User Object => Name: {this.props.user.name}</p>
-        <div>
-          <h4>hobbies</h4>
-          <ul>
-            {/* <li></li> */}
-            {this.props.user.hobbies.map((hobby, i) => <li key={i}>{hobby}</li> )}
-          </ul>
-        </div>
-        <hr/>
-        {this.props.children}
+        <p>Your age is {this.state.age}!</p>
+        <p>Your Status: {this.state.status}</p>
+        <button onClick={() => this.onMakeOlder()} className="btn btn-primary">Make me older.</button>
       </div>
     );
   }
@@ -26,7 +32,5 @@ export class Home extends PureComponent {
 
 Home.propTypes = {
   name: PropTypes.string,
-  age: PropTypes.number,
-  user: PropTypes.object,
-  children: PropTypes.element.isRequired
+  initialAge: PropTypes.number,
 };
