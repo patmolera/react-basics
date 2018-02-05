@@ -6,7 +6,8 @@ export class Home extends PureComponent {
     super();
     this.state = {
       age: props.initialAge,
-      status: 0
+      status: 0,
+      homeLink: props.initialLinkName
     };
     setTimeout(() => {
       this.setState({
@@ -21,6 +22,16 @@ export class Home extends PureComponent {
     });
   }
 
+  onChangeLink () {
+    this.props.changeLink(this.state.homeLink);
+  }
+
+  onHandleChange(event) {
+    this.setState({
+      homeLink: event.target.value
+    });
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -30,6 +41,14 @@ export class Home extends PureComponent {
         <p>Your age is {this.state.age}!</p>
         <p>Your Status: {this.state.status}</p>
         <button onClick={() => this.onMakeOlder()} className="btn btn-primary">Make me older.</button>
+        <hr/>
+        <button onClick={this.props.greet} className="btn btn-primary">Greet Me</button>
+        <hr/>
+        <input type="text"
+          value={this.state.homeLink}
+          onChange={(event) => this.onHandleChange(event)}
+        />
+        <button onClick={this.onChangeLink.bind(this)} className="btn btn-primary">Change Link Header</button>
       </div>
     );
   }
@@ -38,4 +57,6 @@ export class Home extends PureComponent {
 Home.propTypes = {
   name: PropTypes.string,
   initialAge: PropTypes.number,
+  greet: PropTypes.func,
+  initialLinkName: PropTypes.string
 };
