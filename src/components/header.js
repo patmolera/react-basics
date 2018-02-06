@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 
-export class Header extends PureComponent {
-  render () {
+export const Header = (props) => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
@@ -9,7 +8,7 @@ export class Header extends PureComponent {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Link
+                  {props.homeLink}
                 </a>
               </li>
             </ul>
@@ -17,5 +16,4 @@ export class Header extends PureComponent {
         </div>
       </nav>
     );
-  }
-}
+};
