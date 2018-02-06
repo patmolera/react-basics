@@ -9,7 +9,8 @@ class App extends PureComponent {
   constructor () {
     super();
     this.state = {
-      homeLink:"Home"
+      homeLink:"Home",
+      homeMounted: true
     };
   }
   onGreet() {
@@ -21,8 +22,25 @@ class App extends PureComponent {
       homeLink:newName
     });
   }
-  render() {
 
+  onChangeHomeMounted(){
+    this.setState({
+      homeMounted: !this.state.homeMounted
+    });
+  }
+
+  render() {
+    let homeCmp = "";
+    if (this.state.homeMounted) {
+      homeCmp = (<Home
+                    name={"Patrick"}
+                    initialAge={22}
+                    greet={this.onGreet}
+                    changeLink={this.onChangeLinkName.bind(this)}
+                    initialLinkName={this.state.homeLink}
+                  />
+                );
+    }
     return (
       <div className="container">
         <div className="row">
@@ -34,13 +52,12 @@ class App extends PureComponent {
         </div>
         <div className="row">
           <div className="col-md-10">
-            <Home
-              name={"Patrick"}
-              initialAge={22}
-              greet={this.onGreet}
-              changeLink={this.onChangeLinkName.bind(this)}
-              initialLinkName={this.state.homeLink}
-            />
+            {homeCmp}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-10">
+            <button onClick={this.onChangeHomeMounted.bind(this)} className="btn btn-primary">(Un)Mount home component</button>
           </div>
         </div>
       </div>
